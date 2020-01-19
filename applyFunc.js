@@ -6,9 +6,7 @@ function applyMiddleware(classObject, middlewares) {
     
                 get(target, prop) {
                     if (typeof target[prop] === "function") {
-                        for (func in middlewares) {
-                            middlewares[func](prop)
-                        }
+                        for (func of middlewares) func(prop)
                     }
                     return target[prop]
                 }
